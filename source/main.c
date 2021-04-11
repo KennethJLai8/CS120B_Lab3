@@ -1,7 +1,7 @@
 /*	Author: klai022
  *  Partner(s) Name: 
  *	Lab Section:
- *	Assignment: Lab #  Exercise #
+ *	Assignment: Lab 3  Exercise 1
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -11,13 +11,36 @@
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-
 int main(void) {
-    /* Insert DDR and PORT initializations */
+DDRA = 0x00; PORTA = 0xFF; 
+DDRB = 0x00; PORTB = 0XFF;
+DDRC = 0xFF; PORTC = 0x00; //C is an output
 
-    /* Insert your solution below */
-    while (1) {
+while(1) {
 
-    }
-    return 1;
+unsigned char input_A = PINA;
+unsigned char input_B = PINB;
+
+unsigned char i;
+unsigned char cnt = 0x00;
+
+for(i = 0; i < 8; i++){
+	input_A = input_A >> i;
+	
+	if(input_A & 0x01){
+	cnt++;
+	}
+}
+
+for(i = 0; i < 8; i++){
+        input_B = input_B >> i;
+
+        if(input_B & 0x01){
+        cnt++;
+        }
+}
+
+PORTC = cnt;
+}
+return 0;
 }
