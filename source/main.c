@@ -22,6 +22,7 @@ unsigned char input_A = PINA;
 unsigned char input_B = PINB;
 
 unsigned char i;
+unsigned char j;
 unsigned char cnt = 0x00;
 
 for(i = 0; i < 8; i++){
@@ -32,7 +33,7 @@ for(i = 0; i < 8; i++){
 	}
 }
 
-for(i = 0; i < 8; i++){
+for(j = 0; j < 8; j++){
         input_B = input_B >> i;
 
         if(input_B & 0x01){
